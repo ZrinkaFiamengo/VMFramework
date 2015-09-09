@@ -29,7 +29,7 @@ public class SshConnection implements IConnection{
 	
 
 	/**
-	 * Constructor of the class SshConnection. .
+	 * Constructor of the class SshConnection.
 	 * Without parameters system connects to the default host
 	 */
 	public SshConnection()
