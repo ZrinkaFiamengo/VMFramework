@@ -50,12 +50,15 @@ public class LinuxCommands extends SshConnection{
 	public void countErrorWarning(String fileName)
 	{
 		String output;
+		System.out.println("LIST OF POTENTIAL PROBLEMS IN LOG: " + fileName+ "\n");
 		output = sendCommand("cat", fileName + " | grep 'error\\|warning'");
 		System.out.println(output);
-		output = sendCommand("cat", fileName + " | grep 'error\\|warning' | wc -l");
-		System.out.println(output);
+		Integer numberOfErrors = Integer.parseInt(sendCommand("cat", fileName + " | grep 'error' | wc -l"));
+		Integer numberOfWarnings = Integer.parseInt(sendCommand("cat", fileName + " | grep 'warning' | wc -l"));
+		Integer totalNumber = numberOfErrors + numberOfWarnings;
+		System.out.println("**********");
+		System.out.println("Number of errors:" + numberOfErrors.toString());
+		System.out.println("Number of warnings:" + numberOfWarnings.toString());
+		System.out.println("TOTAL:" + totalNumber.toString());
 	}
-	
-	
-
 }
