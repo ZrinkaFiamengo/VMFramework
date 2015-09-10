@@ -21,9 +21,9 @@ public class TestCase0 {
 		//final String output= communicate.sendCommand("cat", "a.txt | grep 'Error\\|Warning'");
 		//String output = communicate.chkconfig("ufw");
 
-		if (output!=null)
+		//if (output!=null)
 	    //communicate.countErrorWarning("a.txt");
-			communicate.getIpAdress(); 
+			//communicate.getIpAdress(); 
 		
 		if (output!=null)
 		{
@@ -35,7 +35,7 @@ public class TestCase0 {
 		}
 
 
-		communicate.countErrorWarning("log.txt");
+		//communicate.countErrorWarning("log.txt");
 		
 		//int number_of_folders= communicate.countFiles(true);
 		//System.out.println(number_of_folders);

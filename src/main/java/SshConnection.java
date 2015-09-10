@@ -12,6 +12,14 @@ import com.ericsson.commonlibrary.remotecli.exceptions.WriteException;
 
 
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+
 /**
  * Class used for maintaining SSH connections.
  * Implements IConnection interface
@@ -34,9 +42,29 @@ public class SshConnection implements IConnection{
 	 */
 	public SshConnection()
 	{
-		this.host = "172.17.87.66";        
-		this.username = "ubuntu";         
-		this.password = "reverse";
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse("src/main/java/config.xml");
+			
+			document.getDocumentElement().normalize();
+			NodeList nodeList = document.getElementsByTagName("Configuration");
+			Node node = nodeList.item(0);
+			
+			if (node.getNodeType() == Node.ELEMENT_NODE)
+			{
+				Element elem =(Element)node;
+				this.host = elem.getElementsByTagName("host").item(0).getTextContent();
+				System.out.println(this.host);
+				this.username = elem.getElementsByTagName("username").item(0).getTextContent();;         
+				this.password = elem.getElementsByTagName("password").item(0).getTextContent();;
+			}
+		}
+		catch (Exception e)
+		{
+			System.out.println("Erorr");
+			e.printStackTrace();
+		}
 		cli = CliFactory.newSsh(host, username, password);
 	}
 	

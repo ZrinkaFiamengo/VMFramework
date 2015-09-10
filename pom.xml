@@ -9,6 +9,7 @@
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.0</version>
 			</plugin>
+
 		</plugins>
 		<extensions>
 			<extension>
@@ -45,12 +46,12 @@
 			</plugin>
 		</plugins>
 	</reporting>
-
+	
 	<dependencies>
-		<dependency>
-			<groupId>com.ericsson.commonlibrary</groupId>
-			<artifactId>remote-cli</artifactId>
-			<version>1.6.10</version>
-		</dependency>
-	</dependencies>
+	<dependency>
+		<groupId>com.ericsson.commonlibrary</groupId>
+		<artifactId>remote-cli</artifactId>
+		<version>1.6.10</version>
+	</dependency>
+</dependencies>
 </project>
