@@ -16,7 +16,7 @@ public class TestCase0 {
 		}
 			
 		final String output= communicate.sendCommand("ls", "|wc -l");
-		//final String output= communicate.sendCommand("cat", "a.txt | grep 'error\\|warning'");
+		//final String output= communicate.sendCommand("cat", "a.txt | grep 'Error\\|Warning'");
 		//String output = communicate.chkconfig("ufw");
 		
 	    communicate.countErrorWarning("a.txt");

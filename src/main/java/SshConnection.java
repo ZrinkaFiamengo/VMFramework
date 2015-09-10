@@ -34,7 +34,7 @@ public class SshConnection implements IConnection{
 	 */
 	public SshConnection()
 	{
-		this.host = "172.17.87.210";        
+		this.host = "172.17.87.66";        
 		this.username = "ubuntu";         
 		this.password = "reverse";
 		cli = CliFactory.newSsh(host, username, password);

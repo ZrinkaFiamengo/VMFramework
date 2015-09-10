@@ -10,7 +10,8 @@ public class LinuxCommands extends SshConnection{
 	 * 
 	 * Function counts how many files current directory has
 	 * @param allFiles boolean value which needs to be set as true if user wants to count all files (including hidden ones)
-	 * @return function returns number of files in the current directory
+	 * @return function returns number of files in the current directory 
+	 * 111111111111111111111111111111111111111111111111111111111111111111111
 	 */
 	public int countFiles(boolean allFiles)
 	{
@@ -50,7 +51,7 @@ public class LinuxCommands extends SshConnection{
 	public void countErrorWarning(String fileName)
 	{
 		String output;
-		System.out.println("LIST OF POTENTIAL PROBLEMS IN LOG: " + fileName+ "\n");
+		System.out.println("LIST OF POTENTIAL PROBLEMS IN LOG: " + fileName + "\n");
 		output = sendCommand("cat", fileName + " | grep 'error\\|warning'");
 		System.out.println(output);
 		Integer numberOfErrors = Integer.parseInt(sendCommand("cat", fileName + " | grep 'error' | wc -l"));
