@@ -15,13 +15,15 @@ public class TestCase0 {
 			return;
 		}
 			
-		final String output= communicate.sendCommand("ls", "|wc -l");
+		//final String output= communicate.sendCommand("ls", "|wc -l");
 		//final String output= communicate.sendCommand("cat", "a.txt | grep 'Error\\|Warning'");
 		//String output = communicate.chkconfig("ufw");
 		
-	    communicate.countErrorWarning("a.txt");
+	    //communicate.countErrorWarning("a.txt");
 		
-		if (output!=null)
+		communicate.getIpAdress(); 
+		
+		/*if (output!=null)
 		{
 			System.out.println("output: " + output);
 		}
@@ -29,7 +31,7 @@ public class TestCase0 {
 		{
 			System.out.println("An error occured during command execution.");
 		}
-		
+		*/
 		
 		//int number_of_folders= communicate.countFiles(true);
 		//System.out.println(number_of_folders);

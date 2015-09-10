@@ -11,7 +11,7 @@ public class LinuxCommands extends SshConnection{
 	 * Function counts how many files current directory has
 	 * @param allFiles boolean value which needs to be set as true if user wants to count all files (including hidden ones)
 	 * @return function returns number of files in the current directory 
-	 * 111111111111111111111111111111111111111111111111111111111111111111111
+	 * 
 	 */
 	public int countFiles(boolean allFiles)
 	{
@@ -61,5 +61,26 @@ public class LinuxCommands extends SshConnection{
 		System.out.println("Number of errors:" + numberOfErrors.toString());
 		System.out.println("Number of warnings:" + numberOfWarnings.toString());
 		System.out.println("TOTAL:" + totalNumber.toString());
+	}
+	
+	/** Function will print your IP address from ifconfig command output
+	 *  "eth2" and "inet addr:1" are strings sequences whose index numbers are needed to locate ip address in output
+	 *  IP_adr is substring that contains ip address
+	 *  result1 and result2 are variables where indexes are stored  
+	 */
+	public void getIpAdress()
+	{
+		String output;
+		String eth_2 = "eth2";
+		String inet_addr = "inet addr:1";
+		String IP_adr = "";
+		int result1;
+		int result2;
+		output = sendCommand("ifconfig");
+		
+		result1 = output.indexOf(eth_2);
+		result2 = output.indexOf(inet_addr, result1);
+		IP_adr = output.substring(result2 + 10, result2 + 22);
+		System.out.println(IP_adr);	
 	}
 }

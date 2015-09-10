@@ -164,7 +164,7 @@ public class SshConnection implements IConnection{
 		
 		try {
 			if(FullCommand!=null)
-				output = cli.send(FullCommand.toLowerCase());
+				output = cli.send(FullCommand);
         } catch (final ReadTimeoutException e) {
             System.out.println("Took to long to find prompt");
             //e.printStackTrace();
