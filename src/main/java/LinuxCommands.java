@@ -1,7 +1,7 @@
 /**
  * Class used for maintaining Linux commands.
  * Extends SshConnection class which allows it to connect via SSH protocol.
- * @author ezrifia 09.09.2015.
+ * @author ezrifia 09.09.2015. - GIT TEST NO.1
  *
  */
 public class LinuxCommands extends SshConnection{
@@ -50,11 +50,16 @@ public class LinuxCommands extends SshConnection{
 	public void countErrorWarning(String fileName)
 	{
 		String output;
+		output = sendCommand("cat", " " + fileName+ " |awk '{print tolower($0)}' | grep 'error\\|warning'");
+		if(output.contains("No such file or directory"))
+		{
+			System.out.println("You entered name of the file which does not exist in the current folder.");
+			return;
+		}
 		System.out.println("LIST OF POTENTIAL PROBLEMS IN LOG: " + fileName+ "\n");
-		output = sendCommand("cat", fileName + " | grep 'error\\|warning'");
 		System.out.println(output);
-		Integer numberOfErrors = Integer.parseInt(sendCommand("cat", fileName + " | grep 'error' | wc -l"));
-		Integer numberOfWarnings = Integer.parseInt(sendCommand("cat", fileName + " | grep 'warning' | wc -l"));
+		Integer numberOfErrors = Integer.parseInt(sendCommand("cat", " " + fileName+ " |awk '{print tolower($0)}'  | grep 'error' | wc -l"));
+		Integer numberOfWarnings = Integer.parseInt(sendCommand("cat", " " + fileName+ " |awk '{print tolower($0)}' | grep 'warning' | wc -l"));
 		Integer totalNumber = numberOfErrors + numberOfWarnings;
 		System.out.println("**********");
 		System.out.println("Number of errors:" + numberOfErrors.toString());
