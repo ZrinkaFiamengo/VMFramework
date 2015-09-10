@@ -15,8 +15,8 @@ public class TestCase0 {
 			return;
 		}
 			
-		//final String output= communicate.sendCommand("ls", "|wc -l");
-		final String output= communicate.sendCommand("cat", " log.txt |awk '{print tolower($0)}' | grep 'error\\|warning'");
+		final String output= communicate.sendCommand("ls", "|wc -l");
+		//final String output= communicate.sendCommand("cat", " log.txt | grep 'error' ");
 		//String output = communicate.chkconfig("ufw");
 
 		if (output!=null)

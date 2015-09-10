@@ -50,16 +50,16 @@ public class LinuxCommands extends SshConnection{
 	public void countErrorWarning(String fileName)
 	{
 		String output;
-		output = sendCommand("cat", " " + fileName+ " |awk '{print tolower($0)}' | grep 'error\\|warning'");
+		output = sendCommand("cat", fileName + "| tr 'A-Z' 'a-z' |grep 'error\\|warning'");
 		if(output.contains("No such file or directory"))
 		{
 			System.out.println("You entered name of the file which does not exist in the current folder.");
 			return;
 		}
-		System.out.println("LIST OF POTENTIAL PROBLEMS IN LOG: " + fileName+ "\n");
+		System.out.println("LIST OF POTENTIAL PROBLEMS IN LOG: " + fileName);
 		System.out.println(output);
-		Integer numberOfErrors = Integer.parseInt(sendCommand("cat", " " + fileName+ " |awk '{print tolower($0)}'  | grep 'error' | wc -l"));
-		Integer numberOfWarnings = Integer.parseInt(sendCommand("cat", " " + fileName+ " |awk '{print tolower($0)}' | grep 'warning' | wc -l"));
+		Integer numberOfErrors = Integer.parseInt(sendCommand("cat", fileName+ "| tr 'A-Z' 'a-z' |grep error | wc -l"));
+		Integer numberOfWarnings = Integer.parseInt(sendCommand("cat", fileName+ "| tr 'A-Z' 'a-z' |grep warning | wc -l"));
 		Integer totalNumber = numberOfErrors + numberOfWarnings;
 		System.out.println("**********");
 		System.out.println("Number of errors:" + numberOfErrors.toString());
