@@ -34,7 +34,6 @@ public class SshConnection implements IConnection{
 	 */
 	public SshConnection()
 	{
-		//XMLConfiguration configRead = new XMLConfiguration("settings.xml");
 		this.host = "172.17.87.66";        
 		this.username = "ubuntu";         
 		this.password = "reverse";
