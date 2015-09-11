@@ -42,29 +42,10 @@ public class SshConnection implements IConnection{
 	 */
 	public SshConnection()
 	{
-		try {
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse("src/main/java/config.xml");
-			
-			document.getDocumentElement().normalize();
-			NodeList nodeList = document.getElementsByTagName("Configuration");
-			Node node = nodeList.item(0);
-			
-			if (node.getNodeType() == Node.ELEMENT_NODE)
-			{
-				Element elem =(Element)node;
-				this.host = elem.getElementsByTagName("host").item(0).getTextContent();
-				System.out.println(this.host);
-				this.username = elem.getElementsByTagName("username").item(0).getTextContent();;         
-				this.password = elem.getElementsByTagName("password").item(0).getTextContent();;
-			}
-		}
-		catch (Exception e)
-		{
-			System.out.println("Erorr");
-			e.printStackTrace();
-		}
+		Configuration config = new Configuration();
+		this.host = config.getHost();
+		this.username = config.getUsername();
+		this.password = config.getPassword();
 		cli = CliFactory.newSsh(host, username, password);
 	}
 	

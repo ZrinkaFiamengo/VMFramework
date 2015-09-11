@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectionSettings>
 	<Configuration>
-		<host>172.17.87.66</host>
+		<host>172.17.87.82</host>
 		<username>ubuntu</username>
 		<password>reverse</password>
 	</Configuration>
